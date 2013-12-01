@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSendSMS"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Send a message"/>
+        <Button
+            android:id="@+id/btnNextPage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Next Page"
+            android:onClick="nextPage"/>
+        </LinearLayout>
+
+    </FrameLayout>

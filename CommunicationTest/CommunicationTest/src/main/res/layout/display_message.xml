@@ -1,0 +1,45 @@
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/question_box"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="previous page"
+        android:onClick="previousPage"/>
+
+    <HorizontalScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadeScrollbars="true"
+        android:scrollbars="horizontal"
+        android:id="@+id/results"
+        android:background="@android:color/black"
+        android:layout_gravity="fill">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:id="@+id/results_holder"
+            android:background="@android:color/background_light"
+            android:layout_gravity="fill">
+
+           <!-- <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollViewer"
+                android:background="@drawable/af_memorial"/>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollViewer1"
+                android:background="@drawable/af_memorial"/>-->
+
+        </LinearLayout>
+        </HorizontalScrollView>
+
+</LinearLayout>
