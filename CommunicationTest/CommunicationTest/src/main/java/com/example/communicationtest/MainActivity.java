@@ -1,16 +1,20 @@
 package com.example.communicationtest;
 
 import android.app.Activity;
-import android.app.ActionBar;
+//import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+
 
 //gesture stuff
 import android.gesture.Gesture;
@@ -33,6 +37,7 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
     private Button btnSendSMS;
     public final static String EXTRA_MESSAGE = "com.example.communicationtest.MESSAGE";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +57,23 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
                     .commit();
         }
 
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        String[] strList;
+        strList = new String[5];
+        strList[0] = "first one";
+        strList[1] = "second one";
+        strList[2] = "third one";
+        strList[3] = "fourth one";
+        strList[4] = "fifth one";
+        for (int i = 0; i < 5; i++) {
+            ViewPollButton fragment = new ViewPollButton();
+            fragment.setName(strList[i]);
+            fragmentTransaction.add(R.id.mainHolder, fragment);
+
+        }
+        fragmentTransaction.commit();
 
     }
 
@@ -118,5 +140,24 @@ public class MainActivity extends Activity implements OnGesturePerformedListener
         startActivity(intent);
     }
 
+    public void openPoll(View view) {
+
+        //ViewPollButton viewBtn = (ViewPollButton)findViewById(view.getId());
+
+        ViewPollButton viewBtn = (ViewPollButton)getSupportFragmentManager().findFragmentById(R.id.view_poll_btn);
+
+        String msg = "view.getId: : " + view.getId();
+        Log.i("openPoll: ", msg);
+
+        if(viewBtn != null) {
+            CharSequence text = viewBtn.getName();
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+            toast.show();
+        }
+
+
+    }
 
 }

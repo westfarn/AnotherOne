@@ -38,16 +38,26 @@ public class DisplayMessageActivity extends Activity {
         setContentView(R.layout.display_message);
 
 
-        if(Build.VERSION.SDK_INT >=Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+        /*if(Build.VERSION.SDK_INT >=Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             //show the up button in the action bar
             getActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
-        addPictures();
-
+        }*/
 
     }
 
+    protected void onResume(Bundle saveInstanceState) {
+        //this is the next step after onCreate
+        super.onResume();
+        addPictures();
+    }
+
+    protected void onStop(Bundle savedInstanceState)
+    {//This is called when we stop the activity
+
+        super.onStop();
+        //removePictures();
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,6 +100,12 @@ public class DisplayMessageActivity extends Activity {
             return rootView;
         }
     }
+
+/* -------------------addPictures -----------------------
+   The functions creates the images that will be placed in
+   the linear view.  The user will be able to double tap
+   to select it as their result.  need to do double click
+    ------------------------------------------------------*/
 
     private Boolean addPictures() {
 
@@ -145,7 +161,7 @@ public class DisplayMessageActivity extends Activity {
             bmp= Bitmap.createScaledBitmap(bmp, info_width - 100, info_height - 100, false);
             imgV = new ImageView(this);
             imgV.setImageBitmap(bmp);
-            imgV.setOnLongClickListener(this);
+            //imgV.setOnLongClickListener(this);
             linearLayout.addView(imgV);
         }
         //scrollViewer.addView(imgV,0);
@@ -159,10 +175,29 @@ public class DisplayMessageActivity extends Activity {
 
 
         return true;
-      
-    public boolean onLongClick(View v) {
-
     }
+
+
+    /* -------------------removePictures -----------------------
+   The functions creates the images that will be placed in
+   the linear view.  The user will be able to double tap
+   to select it as their result.  need to do double click
+    ------------------------------------------------------*/
+    private boolean removePictures() {
+        linearLayout = (LinearLayout)findViewById(R.id.results_holder);
+        int imageLayoutLength = linearLayout.getChildCount();
+        for(int i = 0; i < imageLayoutLength; i++) {
+            linearLayout.removeViewAt(0); //remove each image
+        }
+
+        return false;
+    }
+
+    public boolean onLongClick(View v) {
+        return true;
+    }
+
+
 
 
 

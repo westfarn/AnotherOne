@@ -7,9 +7,11 @@
     tools:ignore="MergeRootFrame" >
 
     <LinearLayout
+        android:id="@+id/mainHolder"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5px">
 
         <Button
             android:id="@+id/btnSendSMS"
@@ -22,6 +24,7 @@
             android:layout_height="wrap_content"
             android:text="Next Page"
             android:onClick="nextPage"/>
+
         </LinearLayout>
 
     </FrameLayout>
